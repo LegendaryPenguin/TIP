@@ -184,26 +184,60 @@ such that (0 <= i <= n - 2).
 # main()
 
 # Problem 8
-def local_maximums(grid):
-    n = len(grid)
-    local_maxes = []
+# def local_maximums(grid):
+#     n = len(grid)
+#     local_maxes = []
     
-    for i in range(1, n-1): 
-        row_maxes = []
-        for j in range(1, n-1):
-            max_val = max(grid[x][y] for x in range (i-1, i+2) for y in range (j-1, j+2))
-            row_maxes.append(max_val)
-        local_maxes.append(row_maxes)    
+#     for i in range(1, n-1): 
+#         row_maxes = []
+#         for j in range(1, n-1):
+#             max_val = max(grid[x][y] for x in range (i-1, i+2) for y in range (j-1, j+2))
+#             row_maxes.append(max_val)
+#         local_maxes.append(row_maxes)    
     
-    return local_maxes        
+#     return local_maxes        
 
+
+# def main():
+#     grid = [
+# 	[9, 9, 8, 1],
+# 	[5, 6, 2, 6],
+# 	[8, 2, 6, 4],
+# 	[6, 2, 2, 2]
+#     ]
+#     print(local_maximums(grid))
+# main() 
+
+
+
+
+# Problem 1
+def transpose(matrix):
+    rows = len(matrix)
+    col = len(matrix[0])
+    transposed = []    
+    for i in range (col):
+        new_row = []
+        for j in range (rows):
+            new_row.append(matrix[j][i])
+        transposed.append(new_row)
+    return transposed
 
 def main():
-    grid = [
-	[9, 9, 8, 1],
-	[5, 6, 2, 6],
-	[8, 2, 6, 4],
-	[6, 2, 2, 2]
+    matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
     ]
-    print(local_maximums(grid))
-main() 
+    matrix = transpose(matrix)
+    matrix1 = [
+    [1, 2, 3],
+    [4, 5, 6]
+    ]
+    matrix1 = transpose(matrix1)
+    for row in matrix:
+        print (row)
+    for row1 in matrix1:
+        print (row1)
+        
+main()
