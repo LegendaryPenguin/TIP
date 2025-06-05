@@ -212,32 +212,47 @@ such that (0 <= i <= n - 2).
 
 
 # Problem 1
-def transpose(matrix):
-    rows = len(matrix)
-    col = len(matrix[0])
-    transposed = []    
-    for i in range (col):
-        new_row = []
-        for j in range (rows):
-            new_row.append(matrix[j][i])
-        transposed.append(new_row)
-    return transposed
+# def transpose(matrix):
+#     rows = len(matrix)
+#     col = len(matrix[0])
+#     transposed = []    
+#     for i in range (col):
+#         new_row = []
+#         for j in range (rows):
+#             new_row.append(matrix[j][i])
+#         transposed.append(new_row)
+#     return transposed
 
-def main():
-    matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-    ]
-    matrix = transpose(matrix)
-    matrix1 = [
-    [1, 2, 3],
-    [4, 5, 6]
-    ]
-    matrix1 = transpose(matrix1)
-    for row in matrix:
-        print (row)
-    for row1 in matrix1:
-        print (row1)
+# def main():
+#     matrix = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+#     ]
+#     matrix = transpose(matrix)
+#     matrix1 = [
+#     [1, 2, 3],
+#     [4, 5, 6]
+#     ]
+#     matrix1 = transpose(matrix1)
+#     for row in matrix:
+#         print (row)
+#     for row1 in matrix1:
+#         print (row1)
         
+# main()
+
+# Problem 2
+def reverse_list(lst):
+    left = 0
+    right = len(lst) - 1
+    while left < right:
+        lst[left], lst[right] = lst[right], lst[left]
+        left += 1
+        right -= 1
+    return lst
+    
+def main():
+    lst = ["pooh", "christopher robin", "piglet", "roo", "eeyore"]
+    print(reverse_list(lst))
 main()
