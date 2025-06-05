@@ -243,16 +243,55 @@ such that (0 <= i <= n - 2).
 # main()
 
 # Problem 2
-def reverse_list(lst):
-    left = 0
-    right = len(lst) - 1
-    while left < right:
-        lst[left], lst[right] = lst[right], lst[left]
-        left += 1
-        right -= 1
-    return lst
+# def reverse_list(lst):
+#     left = 0
+#     right = len(lst) - 1
+#     while left < right:
+#         lst[left], lst[right] = lst[right], lst[left]
+#         left += 1
+#         right -= 1
+#     return lst
     
-def main():
-    lst = ["pooh", "christopher robin", "piglet", "roo", "eeyore"]
-    print(reverse_list(lst))
-main()
+# def main():
+#     lst = ["pooh", "christopher robin", "piglet", "roo", "eeyore"]
+#     print(reverse_list(lst))
+# main()
+
+
+# Problem 1
+def add_matrices(matrix1, matrix2):
+    rows = len(matrix1)
+    col = len(matrix1[0])
+
+    emptyRow = [0 for i in range(col)]
+    sum_matrix = [emptyRow for i in range(rows)]
+
+    for i in range(rows):
+        for j in range(col):
+            sum_matrix[i][j] = matrix1[i][j] + matrix2[i][j]
+    
+
+    # sum_matrix = []
+    # for i in range (rows):
+    #     row_add = []
+    #     for j in range (col):
+    #         row_add.append(matrix1[i][j] + matrix2[i][j])
+    #     sum_matrix.append(row_add)
+    return sum_matrix
+            
+
+
+matrix1 = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+matrix2 = [
+    [9, 8, 7],
+    [6, 5, 4],
+    [3, 2, 1]
+]
+
+print(add_matrices(matrix1, matrix2))
+
