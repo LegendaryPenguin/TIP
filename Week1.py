@@ -259,39 +259,64 @@ such that (0 <= i <= n - 2).
 
 
 # Problem 1
-def add_matrices(matrix1, matrix2):
-    rows = len(matrix1)
-    col = len(matrix1[0])
+# def add_matrices(matrix1, matrix2):
+#     rows = len(matrix1)
+#     col = len(matrix1[0])
 
-    emptyRow = [0 for i in range(col)]
-    sum_matrix = [emptyRow for i in range(rows)]
+#     emptyRow = [0 for i in range(col)]
+#     sum_matrix = [emptyRow for i in range(rows)]
 
-    for i in range(rows):
-        for j in range(col):
-            sum_matrix[i][j] = matrix1[i][j] + matrix2[i][j]
+#     for i in range(rows):
+#         for j in range(col):
+#             sum_matrix[i][j] = matrix1[i][j] + matrix2[i][j]
     
 
-    # sum_matrix = []
-    # for i in range (rows):
-    #     row_add = []
-    #     for j in range (col):
-    #         row_add.append(matrix1[i][j] + matrix2[i][j])
-    #     sum_matrix.append(row_add)
-    return sum_matrix
+#     # sum_matrix = []
+#     # for i in range (rows):
+#     #     row_add = []
+#     #     for j in range (col):
+#     #         row_add.append(matrix1[i][j] + matrix2[i][j])
+#     #     sum_matrix.append(row_add)
+#     return sum_matrix
             
 
 
-matrix1 = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+# matrix1 = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+# ]
 
-matrix2 = [
-    [9, 8, 7],
-    [6, 5, 4],
-    [3, 2, 1]
-]
+# matrix2 = [
+#     [9, 8, 7],
+#     [6, 5, 4],
+#     [3, 2, 1]
+# ]
 
-print(add_matrices(matrix1, matrix2))
+# print(add_matrices(matrix1, matrix2))
 
+'''
+1. We take in a string
+If left and right letters for each index match until the middle, its a palindrome: True
+Otherwise return False
+Left Pointer: Starts index 0
+Right Pointer: Starts at len(string) - 1
+
+We keep updating the pointers inwards while Left < Right
+'''
+def is_palindrome(s):
+    left = 0
+    right = len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+
+s = "madam"
+print(is_palindrome(s))
+
+s = "madamweb"
+print(is_palindrome(s))
