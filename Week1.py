@@ -304,19 +304,87 @@ Right Pointer: Starts at len(string) - 1
 
 We keep updating the pointers inwards while Left < Right
 '''
-def is_palindrome(s):
+# def is_palindrome(s):
+#     left = 0
+#     right = len(s) - 1
+#     while left < right:
+#         if s[left] != s[right]:
+#             return False
+#         left += 1
+#         right -= 1
+#     return True
+
+
+# s = "madam"
+# print(is_palindrome(s))
+
+# s = "madamweb"
+# print(is_palindrome(s))
+
+
+def two_sum(nums, target):
     left = 0
-    right = len(s) - 1
+    right = len(nums) - 1
     while left < right:
-        if s[left] != s[right]:
-            return False
-        left += 1
-        right -= 1
-    return True
+        if target == nums[left] + nums[right]:
+            return [left, right]
+        elif target > nums[left] + nums[right]:
+            left += 1
+        else:
+            right -= 1
+    print ("Target cannot be found")
 
 
-s = "madam"
-print(is_palindrome(s))
+# nums = [2, 7, 11, 15]
+# target = 9
+# print(two_sum(nums, target))
 
-s = "madamweb"
-print(is_palindrome(s))
+# nums = [2, 7, 11, 15]
+# target = 18
+# print(two_sum(nums, target))
+
+
+def two_sum(nums, target):
+    seen = set()
+    used = set()
+    pairs = []
+
+    for num in nums:
+        complement = target - num
+        if complement in seen and (complement, num) not in used:
+            pairs.append([complement, num])
+            used.add((complement, num))
+            used.add((num, complement))  # prevent reversed duplicates
+        seen.add(num)
+
+    return pairs
+
+def three_sum(nums):
+    nums.sort()  # Step 1: Sort the list
+    result = []
+
+    for i in range(len(nums)):
+        # Step 2: Skip duplicate elements
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+
+        # Step 3: Find pairs that sum to -nums[i]
+        current = nums[i]
+        pairs = two_sum(nums[i + 1:], -current)
+
+        for pair in pairs:
+            triplet = [current] + pair
+            if triplet not in result:  # Optional check, helps ensure uniqueness
+                result.append(triplet)
+
+    return result
+
+
+nums = [-1, 0, 1, 2, -1, -4]
+print(three_sum(nums))
+
+nums = [0, 1, 1]
+print(three_sum(nums))
+
+nums = [0, 0, 0]
+print(three_sum(nums))
